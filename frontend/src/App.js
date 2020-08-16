@@ -5,8 +5,3 @@ function App() {
 }
 
 export default App;
-
-// TODOs
-// 1. Create dummy job data
-// 2. Create Job Dashboard
-// 3.
