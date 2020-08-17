@@ -46,7 +46,8 @@ CREATE TABLE "user_employer" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
   "employer_id" int,
-  "is_current_employer" boolean
+  "is_current_employer" boolean,
+  UNIQUE (user_id, employer_id)
 );
 
 CREATE TABLE "company" (
@@ -64,7 +65,8 @@ CREATE TABLE "user_skill" (
   "user_id" int,
   "skill_id" int,
   "level" skill_level,
-  "last_used" varchar
+  "last_used" varchar,
+  UNIQUE (user_id, skill_id)
 );
 
 CREATE TABLE "education" (
@@ -76,7 +78,9 @@ CREATE TABLE "user_education" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
   "employer_id" int,
-  "is_current_education" boolean
+  "is_current_education" boolean,
+  UNIQUE (user_id, employer_id),
+  UNIQUE (user_id, is_current_education)
 );
 
 ALTER TABLE "jobpost" ADD FOREIGN KEY ("company_name") REFERENCES "company" ("id");
