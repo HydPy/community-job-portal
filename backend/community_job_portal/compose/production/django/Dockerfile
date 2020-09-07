@@ -7,9 +7,10 @@ COPY . /app
 RUN npm run build
 
 # Python build stage
-FROM python:3.7-slim-buster
+FROM python:3.8-slim-buster
 
 ENV PYTHONUNBUFFERED 1
+ENV POETRY_VERSION=1.0.10
 
 RUN apt-get update \
   # dependencies for building Python packages
@@ -20,15 +21,21 @@ RUN apt-get update \
   && apt-get install -y gettext \
   # cleaning up unused files
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+
+RUN pip install "poetry==$POETRY_VERSION"
 
 RUN addgroup --system django \
     && adduser --system --ingroup django django
 
-# Requirements are installed here to ensure they will be cached.
-COPY ./requirements /requirements
-RUN pip install --no-cache-dir -r /requirements/production.txt \
-    && rm -rf /requirements
+# Copy only requirements, to cache them in docker layer:
+WORKDIR /pysetup
+COPY ./poetry.lock ./pyproject.toml /pysetup/
+
+# Project initialization:
+RUN poetry config virtualenvs.create false \
+  && poetry install --no-dev --no-interaction --no-ansi
+
 
 COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
