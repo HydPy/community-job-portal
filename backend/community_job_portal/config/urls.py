@@ -4,6 +4,8 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+
+from health_check import urls as health_urls
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -16,6 +18,8 @@ urlpatterns = [
     # User management
     path("users/", include("community_job_portal.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    # Health checks:
+    path('health/', include(health_urls)),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # API URLS
