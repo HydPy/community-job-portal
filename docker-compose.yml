@@ -12,7 +12,6 @@ services:
     image: community_job_portal_local_django
     depends_on:
       - postgres
-      - mailhog
     volumes:
       - .:/app
     env_file:
@@ -33,10 +32,10 @@ services:
     env_file:
       - ./.envs/.local/.postgres
 
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    ports:
-      - "8025:8025"
+  # mailhog:
+  #   image: mailhog/mailhog:v1.0.0
+  #   ports:
+  #     - "8025:8025"
 
 # Commenting following services for now, will be used in future
   # redis:

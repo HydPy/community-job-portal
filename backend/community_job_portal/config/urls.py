@@ -9,15 +9,10 @@ from health_check import urls as health_urls
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("community_job_portal.users.urls", namespace="users")),
-    path("accounts/", include("allauth.urls")),
     # Health checks:
     path('health/', include(health_urls)),
     # Your stuff: custom urls includes go here
