@@ -19,7 +19,7 @@ Once docker is up and running please clone the repo and follow below steps
 cd community-job-portal
 docker-compise build
 docker-compose up -d
-docker-compose exec django python ./backend/community_job_portal/manage.py createsuperuser --email <email> --username <username>
+docker-compose exec django /entrypoint python ./backend/community_job_portal/manage.py createsuperuser --email <email> --username <username>
 docker-compose ps # to see the status of containers
 # post this, you shall be able to access the app on http://localhost:8000/
 ```
