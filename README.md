@@ -1,23 +1,23 @@
 # Community Job Portal
-An open source job portal for the communities and by the communties.
+An open source job portal for the communities and by the communities.
 
 ## About Community Job Portal
 
-Community Job Portal is about creating a community job platform which will be integrated with all active communities through bots on platforms like - “Slack, Telegram, Zulip, Discord etc. Using these bots, community members of such groups can use some predefined text format to post a job directly to the community job portal which can include a trigger for a bot to post the job. Community members would also be able to create their user profiles on this platform. Based on the posted jobs on the platform, our recommendation systems on the platform will directly notify the right person(fit) for the position who is/are looking for a change. A job aspirant can anytime come on the portal to look for the open job positions and apply for it using the given information.
+Community Job Portal is about creating a community job platform which will be integrated with all active communities through bots on platforms like - Slack, Telegram, Zulip, Discord etc. Using these bots, community members of such groups can use some predefined text format to post a job directly to the community job portal which can include a trigger for a bot to post the job. Community members would also be able to create their user profiles on this platform. Based on the posted jobs on the platform, our recommendation systems on the platform will directly notify the right person(fit) for the position who is/are looking for a change. A job aspirant can anytime come on the portal to look for the open job positions and apply for it using the given information.
 
 To understand more about Community Job Portal, please go through with [documentation](https://github.com/HydPy/community-job-portal/wiki) on the wiki, we'll try and keep the documentation updated.
 
 ## How to setup the project
 
-### Pre-requitsites
+### Pre-requisites
 
 - Docker & Docker Compose should be Installed
 
-Once docker is up and running please clone the repo and follow below steps
+Once Docker is up and running please clone the repo and follow the steps below.
 
 ```
 cd community-job-portal
-docker-compise build
+docker-compose build
 docker-compose up -d
 docker-compose exec django python ./backend/community_job_portal/manage.py createsuperuser --email <email> --username <username>
 docker-compose ps # to see the status of containers
@@ -26,12 +26,12 @@ docker-compose ps # to see the status of containers
 
 ## Contributing
 
-To contribute to Community Job Portal :
+To contribute to Community Job Portal:
 
-1. Please make a fork request for this respository, clone your fork.
-2. Create a branch with "issue-id" of issue on which you are working, mentioned in name of branch.
+1. Please make a fork request for this repository, clone your fork.
+2. Create a branch with the "issue-id" of issue on which you are working, mentioned in name of branch.
 3. Make some changes, and submit a pull request.
-4. Please first discuss the change you wish to make via issue, or zulip.
+4. Please first discuss the change you wish to make via an issue, or zulip.
 5. Please do follow these [guidelines](https://chris.beams.io/posts/git-commit/) for writing good commit messages
 
 ## Pull Request Process
